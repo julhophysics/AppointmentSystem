@@ -1,0 +1,16 @@
+const express = require('express')
+const bodyParser = require('body-parser')
+const favicon = require('serve-favicon')
+const path = require('path')
+const cors = require('cors')
+const router = require('../routes/router')
+const app = express()
+
+app.use(favicon(path.join('.', 'public', 'favicon.ico')))
+app.use(router)
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors())
+app.use(express.static('public'))
+app.set('view engine', 'ejs')
+module.exports = app
